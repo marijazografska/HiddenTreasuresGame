@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://do82ardwuqv8r"]
+
+[ext_resource type="Script" path="res://treasure.gd" id="1_uitbk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ojpw"]
+size = Vector3(1.6362, 0.942625, 1.30182)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4lu7b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h54uk"]
+albedo_color = Color(0.968627, 0.768627, 0, 1)
+metallic = 0.31
+metallic_specular = 0.76
+
+[node name="Treasure" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_uitbk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0792389, 0.0286855, -0.0316467)
+shape = SubResource("BoxShape3D_2ojpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059989, -0.0281324, -0.0123448)
+mesh = SubResource("SphereMesh_4lu7b")
+surface_material_override/0 = SubResource("StandardMaterial3D_h54uk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="collected" from="." to="." method="_on_collected"]

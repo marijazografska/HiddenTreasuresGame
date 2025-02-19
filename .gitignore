@@ -1,0 +1,9 @@
+# Ignore Godot-specific files
+.import/
+.godot/
+.mono/
+.vs/
+.cache/
+export_presets.cfg
+*.log
+
